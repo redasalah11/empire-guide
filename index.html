@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Empire Guide | دليل القطاعات</title>
+    <title>مقاطعة إمباير | الدليل الرسمي</title>
 
     <style>
         * {
@@ -15,138 +15,212 @@
 
         body {
             font-family: Tahoma, Arial, sans-serif;
-            background: #0b0f14;
+            background: #080d14;
             color: #ffffff;
             min-height: 100vh;
         }
 
+        /* =========================
+           HEADER
+        ========================= */
+
         .header {
-            padding: 25px 8%;
-            border-bottom: 1px solid #222a33;
-            background: #0d1218;
+            height: 75px;
+            padding: 0 7%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #0b1119;
+            border-bottom: 1px solid #202b38;
         }
 
-        .logo {
-            font-size: 25px;
-            font-weight: bold;
-            color: #e63946;
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
         }
+
+        .brand img {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+            border-radius: 50%;
+        }
+
+        .brand-name {
+            font-size: 24px;
+            font-weight: bold;
+            color: #1683ff;
+        }
+
+        .brand-subtitle {
+            font-size: 12px;
+            color: #8995a5;
+            margin-top: 3px;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
 
         .hero {
+            padding: 75px 20px 65px;
             text-align: center;
-            padding: 80px 20px 60px;
             background:
-                radial-gradient(circle at top, #26313d 0%, #0b0f14 55%);
+                radial-gradient(circle at center, #142235 0%, #0b1119 45%, #080d14 100%);
+        }
+
+        .hero-logo {
+            width: 125px;
+            height: 125px;
+            object-fit: contain;
+            margin-bottom: 25px;
+            filter: drop-shadow(0 0 25px rgba(0, 110, 255, 0.35));
         }
 
         .hero h1 {
-            font-size: 46px;
-            margin-bottom: 20px;
+            font-size: 52px;
+            font-weight: 800;
+            margin-bottom: 18px;
         }
 
         .hero h1 span {
-            color: #e63946;
+            color: #1683ff;
         }
 
         .hero p {
-            color: #aeb8c2;
-            font-size: 18px;
-            line-height: 1.8;
-            max-width: 700px;
+            max-width: 750px;
             margin: auto;
+            color: #aeb9c8;
+            font-size: 17px;
+            line-height: 2;
         }
 
+        /* =========================
+           SEARCH
+        ========================= */
+
         .search-box {
-            max-width: 600px;
+            max-width: 570px;
             margin: 35px auto 0;
+            position: relative;
         }
 
         .search-box input {
             width: 100%;
-            padding: 17px 22px;
+            height: 55px;
+            padding: 0 22px;
             border-radius: 12px;
-            border: 1px solid #303b46;
-            background: #151b22;
-            color: white;
-            font-size: 16px;
+            border: 1px solid #293747;
             outline: none;
+            background: #111923;
+            color: #ffffff;
+            font-size: 15px;
+            text-align: right;
+        }
+
+        .search-box input::placeholder {
+            color: #687587;
         }
 
         .search-box input:focus {
-            border-color: #e63946;
+            border-color: #1683ff;
+            box-shadow: 0 0 0 3px rgba(22, 131, 255, 0.12);
         }
 
-        .sections {
-            padding: 50px 8%;
+        /* =========================
+           CONTENT
+        ========================= */
+
+        .content {
+            max-width: 1250px;
+            margin: auto;
+            padding: 30px 25px 80px;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 35px;
+            margin-bottom: 40px;
         }
 
         .section-title h2 {
-            font-size: 30px;
+            font-size: 32px;
             margin-bottom: 10px;
         }
 
         .section-title p {
-            color: #8f9aa5;
+            color: #7f8b9b;
+            font-size: 15px;
         }
+
+        /* =========================
+           CARDS
+        ========================= */
 
         .cards {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 22px;
+            gap: 20px;
         }
 
         .card {
-            background: #121820;
-            border: 1px solid #252f39;
-            border-radius: 18px;
+            background: #111923;
+            border: 1px solid #263442;
+            border-radius: 17px;
             padding: 30px 20px;
             text-align: center;
-            transition: 0.3s;
-            cursor: pointer;
+            transition: 0.25s ease;
         }
 
         .card:hover {
-            transform: translateY(-6px);
-            border-color: #e63946;
-            box-shadow: 0 10px 35px rgba(230, 57, 70, 0.15);
+            transform: translateY(-5px);
+            border-color: #1683ff;
+            box-shadow: 0 10px 35px rgba(0, 100, 255, 0.12);
         }
 
-        .icon {
-            width: 75px;
-            height: 75px;
+        .card-icon {
+            width: 68px;
+            height: 68px;
             margin: 0 auto 20px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: #1c252e;
-            font-size: 35px;
+            background: #1a2633;
+            font-size: 30px;
         }
 
         .card h3 {
-            font-size: 21px;
+            font-size: 20px;
             margin-bottom: 12px;
         }
 
         .card p {
-            color: #8995a0;
-            line-height: 1.7;
-            font-size: 14px;
+            color: #8592a3;
+            font-size: 13px;
+            line-height: 1.9;
         }
 
+        /* =========================
+           FOOTER
+        ========================= */
+
         .footer {
-            margin-top: 50px;
-            padding: 30px;
             text-align: center;
-            border-top: 1px solid #222a33;
-            color: #6f7a85;
-            background: #0d1218;
+            padding: 25px;
+            border-top: 1px solid #202b38;
+            background: #0b1119;
+            color: #687587;
+            font-size: 13px;
         }
+
+        .footer span {
+            color: #1683ff;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
 
         @media (max-width: 900px) {
             .cards {
@@ -154,21 +228,38 @@
             }
 
             .hero h1 {
-                font-size: 36px;
+                font-size: 40px;
             }
         }
 
-        @media (max-width: 550px) {
+        @media (max-width: 600px) {
+            .header {
+                padding: 0 20px;
+            }
+
+            .brand-name {
+                font-size: 19px;
+            }
+
+            .brand img {
+                width: 40px;
+                height: 40px;
+            }
+
             .cards {
                 grid-template-columns: 1fr;
             }
 
             .hero {
-                padding-top: 55px;
+                padding-top: 50px;
             }
 
             .hero h1 {
-                font-size: 30px;
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 14px;
             }
         }
     </style>
@@ -176,32 +267,47 @@
 
 <body>
 
+    <!-- HEADER -->
     <header class="header">
-        <div class="logo">EMPIRE GUIDE</div>
+        <div class="brand">
+            <img src="logo.png" alt="مقاطعة إمباير">
+            <div>
+                <div class="brand-name">مقاطعة إمباير</div>
+                <div class="brand-subtitle">الدليل الرسمي للمقاطعة</div>
+            </div>
+        </div>
     </header>
 
+
+    <!-- HERO -->
     <section class="hero">
 
+        <img class="hero-logo" src="logo.png" alt="شعار مقاطعة إمباير">
+
         <h1>
-            دليل <span>القطاعات</span>
+            دليل <span>مقاطعة إمباير</span>
         </h1>
 
         <p>
-            المرجع التعليمي والتدريبي لجميع قطاعات المدينة.
-            اختر القطاع الذي تريد معرفة الدليل أو الدورات الخاصة به.
+            المرجع التعليمي والتدريبي لجميع قطاعات المدينة
+            <br>
+            اختر القسم أو الدليل الذي تريد الاطلاع عليه.
         </p>
 
         <div class="search-box">
             <input
                 type="text"
-                id="search"
+                id="searchInput"
                 placeholder="ابحث عن قطاع أو دورة أو دليل..."
+                onkeyup="searchCards()"
             >
         </div>
 
     </section>
 
-    <section class="sections">
+
+    <!-- CONTENT -->
+    <main class="content">
 
         <div class="section-title">
             <h2>قطاعات المدينة</h2>
@@ -210,32 +316,32 @@
 
         <div class="cards" id="cards">
 
-            <div class="card" data-name="الهلال الأحمر">
-                <div class="icon">🚑</div>
+            <div class="card">
+                <div class="card-icon">🚑</div>
                 <h3>الهلال الأحمر</h3>
                 <p>
                     الدليل الكامل والدورات والتعليمات الخاصة بالهلال الأحمر.
                 </p>
             </div>
 
-            <div class="card" data-name="الأمن العام">
-                <div class="icon">👮</div>
+            <div class="card">
+                <div class="card-icon">👮</div>
                 <h3>الأمن العام</h3>
                 <p>
                     الدليل والدورات والقوانين الخاصة بقطاع الأمن العام.
                 </p>
             </div>
 
-            <div class="card" data-name="أمن المنشآت">
-                <div class="icon">🛡️</div>
+            <div class="card">
+                <div class="card-icon">🛡️</div>
                 <h3>أمن المنشآت</h3>
                 <p>
                     جميع الأدلة والدورات والتعليمات الخاصة بأمن المنشآت.
                 </p>
             </div>
 
-            <div class="card" data-name="الميكانيكي">
-                <div class="icon">🔧</div>
+            <div class="card">
+                <div class="card-icon">🔧</div>
                 <h3>الميكانيكي</h3>
                 <p>
                     دليل الميكانيكي والدورات والأنظمة الخاصة بالقطاع.
@@ -244,34 +350,39 @@
 
         </div>
 
-    </section>
+    </main>
 
+
+    <!-- FOOTER -->
     <footer class="footer">
-        Empire RolePlay © جميع الحقوق محفوظة
+        جميع الحقوق محفوظة © <span>مقاطعة إمباير</span>
     </footer>
+
 
     <script>
 
-        const search = document.getElementById("search");
-        const cards = document.querySelectorAll(".card");
+        function searchCards() {
 
-        search.addEventListener("input", function () {
+            const input = document
+                .getElementById("searchInput")
+                .value
+                .toLowerCase();
 
-            const value = search.value.toLowerCase();
+            const cards = document.querySelectorAll(".card");
 
             cards.forEach(function(card) {
 
-                const name = card.dataset.name.toLowerCase();
+                const text = card.innerText.toLowerCase();
 
-                if (name.includes(value)) {
-                    card.style.display = "block";
+                if (text.includes(input)) {
+                    card.style.display = "";
                 } else {
                     card.style.display = "none";
                 }
 
             });
 
-        });
+        }
 
     </script>
 
