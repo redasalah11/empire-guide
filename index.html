@@ -1,936 +1,904 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>مقاطعة امباير</title>
+  <title>مقاطعة امباير</title>
 
-<style>
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Tahoma, Arial, sans-serif;
-}
-
-body{
-    background:#070b12;
-    color:#fff;
-    min-height:100vh;
-}
-
-header{
-    height:75px;
-    background:#0b111c;
-    border-bottom:1px solid #1683ff55;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:0 6%;
-    position:sticky;
-    top:0;
-    z-index:100;
-}
-
-.logo-area{
-    display:flex;
-    align-items:center;
-    gap:12px;
-}
-
-.logo-area img{
-    width:48px;
-    height:48px;
-    object-fit:contain;
-    border-radius:10px;
-}
-
-.logo-area h2{
-    color:#1683ff;
-    font-size:22px;
-}
-
-.container{
-    width:90%;
-    max-width:1200px;
-    margin:auto;
-}
-
-.hero{
-    text-align:center;
-    padding:70px 20px 45px;
-}
-
-.hero img{
-    width:120px;
-    height:120px;
-    object-fit:contain;
-    border-radius:20px;
-    margin-bottom:20px;
-    box-shadow:0 0 35px #1683ff33;
-}
-
-.hero h1{
-    font-size:42px;
-    color:#1683ff;
-    margin-bottom:12px;
-}
-
-.hero p{
-    color:#aab4c3;
-    font-size:17px;
-}
-
-.search-box{
-    max-width:600px;
-    margin:30px auto 50px;
-    position:relative;
-}
-
-.search-box input{
-    width:100%;
-    padding:17px 22px;
-    border-radius:12px;
-    border:1px solid #1683ff55;
-    background:#0d1522;
-    color:white;
-    outline:none;
-    font-size:16px;
-    text-align:right;
-}
-
-.search-box input:focus{
-    border-color:#1683ff;
-    box-shadow:0 0 15px #1683ff22;
-}
-
-.page-title{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    margin-bottom:25px;
-}
-
-.page-title h2{
-    color:#1683ff;
-}
-
-.back-btn{
-    background:#1683ff;
-    border:none;
-    color:white;
-    padding:11px 20px;
-    border-radius:9px;
-    cursor:pointer;
-    font-size:15px;
-}
-
-.back-btn:hover{
-    background:#056dcc;
-}
-
-.grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:20px;
-    padding-bottom:50px;
-}
-
-.card{
-    background:#0d1522;
-    border:1px solid #1683ff33;
-    border-radius:15px;
-    padding:28px 20px;
-    cursor:pointer;
-    transition:.25s;
-    text-align:center;
-}
-
-.card:hover{
-    transform:translateY(-5px);
-    border-color:#1683ff;
-    box-shadow:0 10px 30px #1683ff18;
-}
-
-.card-icon{
-    font-size:45px;
-    margin-bottom:15px;
-}
-
-.card h3{
-    color:white;
-    margin-bottom:10px;
-    font-size:20px;
-}
-
-.card p{
-    color:#9ba7b8;
-    line-height:1.7;
-    font-size:14px;
-}
-
-.section-card{
-    background:#0d1522;
-    border:1px solid #1683ff33;
-    border-radius:14px;
-    padding:22px;
-    cursor:pointer;
-    transition:.25s;
-    display:flex;
-    align-items:center;
-    gap:15px;
-}
-
-.section-card:hover{
-    border-color:#1683ff;
-    transform:translateY(-3px);
-    background:#101b2b;
-}
-
-.section-icon{
-    width:50px;
-    height:50px;
-    border-radius:12px;
-    background:#1683ff15;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:25px;
-    flex-shrink:0;
-}
-
-.section-card h3{
-    margin-bottom:5px;
-}
-
-.section-card p{
-    color:#8996a8;
-    font-size:13px;
-}
-
-.content-page{
-    display:none;
-    padding:40px 0 70px;
-}
-
-.content-box{
-    background:#0d1522;
-    border:1px solid #1683ff33;
-    border-radius:15px;
-    padding:25px;
-}
-
-.content-box h2{
-    color:#1683ff;
-    margin-bottom:15px;
-}
-
-.content-box p{
-    color:#aab4c3;
-    line-height:2;
-}
-
-.pdf-box{
-    margin-top:20px;
-    background:#05080d;
-    border:1px solid #1683ff33;
-    border-radius:12px;
-    overflow:hidden;
-}
-
-.pdf-box iframe{
-    width:100%;
-    height:750px;
-    border:none;
-}
-
-.home-page{
-    display:block;
-}
-
-.sector-page{
-    display:none;
-    padding:40px 0 70px;
-}
-
-footer{
-    border-top:1px solid #1683ff22;
-    text-align:center;
-    padding:25px;
-    color:#657286;
-    margin-top:30px;
-}
-
-.no-result{
-    display:none;
-    text-align:center;
-    color:#8894a5;
-    padding:30px;
-}
-
-@media(max-width:900px){
-    .grid{
-        grid-template-columns:repeat(2,1fr);
-    }
-}
-
-@media(max-width:600px){
-
-    header{
-        padding:0 4%;
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, Tahoma, sans-serif;
     }
 
-    .logo-area h2{
-        font-size:18px;
+    body {
+      background: #050b16;
+      color: white;
+      min-height: 100vh;
     }
 
-    .hero{
-        padding-top:45px;
+    /* HEADER */
+    header {
+      width: 100%;
+      padding: 18px 30px;
+      background: #071426;
+      border-bottom: 1px solid #12345a;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
 
-    .hero h1{
-        font-size:30px;
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
     }
 
-    .grid{
-        grid-template-columns:1fr;
+    .brand img {
+      width: 55px;
+      height: 55px;
+      object-fit: contain;
+      border-radius: 10px;
     }
 
-    .page-title{
-        gap:15px;
-        flex-direction:column;
-        align-items:stretch;
+    .brand h1 {
+      color: #39a9ff;
+      font-size: 24px;
     }
 
-    .back-btn{
-        width:100%;
+    .brand p {
+      color: #8fa8c5;
+      font-size: 13px;
+      margin-top: 4px;
     }
 
-    .pdf-box iframe{
-        height:600px;
+    /* HOME */
+    .home-page {
+      max-width: 1200px;
+      margin: auto;
+      padding: 45px 20px;
     }
-}
 
-</style>
+    .hero {
+      text-align: center;
+      padding: 35px 20px 50px;
+    }
+
+    .hero img {
+      width: 150px;
+      height: 150px;
+      object-fit: contain;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 35px rgba(0, 145, 255, 0.25);
+    }
+
+    .hero h2 {
+      font-size: 38px;
+      color: #39a9ff;
+      margin-bottom: 12px;
+    }
+
+    .hero p {
+      color: #9bb2ca;
+      font-size: 16px;
+    }
+
+    /* SEARCH */
+    .search-box {
+      margin: 0 auto 35px;
+      max-width: 650px;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 17px 22px;
+      border-radius: 12px;
+      border: 1px solid #173b61;
+      background: #081727;
+      color: white;
+      outline: none;
+      font-size: 16px;
+    }
+
+    .search-box input:focus {
+      border-color: #168cff;
+      box-shadow: 0 0 15px rgba(22, 140, 255, 0.15);
+    }
+
+    /* SECTORS */
+    .sectors {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+
+    .sector-card {
+      background: linear-gradient(145deg, #0a1a2d, #071220);
+      border: 1px solid #12375d;
+      border-radius: 18px;
+      padding: 30px;
+      cursor: pointer;
+      transition: 0.25s;
+    }
+
+    .sector-card:hover {
+      transform: translateY(-5px);
+      border-color: #1b9aff;
+      box-shadow: 0 10px 35px rgba(0, 132, 255, 0.12);
+    }
+
+    .sector-card h3 {
+      color: #38a8ff;
+      font-size: 23px;
+      margin-bottom: 10px;
+    }
+
+    .sector-card p {
+      color: #91a9c3;
+      font-size: 14px;
+    }
+
+    /* PAGE */
+    .sector-page,
+    .content-page {
+      display: none;
+      max-width: 1250px;
+      margin: auto;
+      padding: 35px 20px 60px;
+    }
+
+    .back-btn {
+      display: inline-block;
+      background: #0b2946;
+      color: #63bcff;
+      padding: 11px 18px;
+      border-radius: 9px;
+      cursor: pointer;
+      margin-bottom: 25px;
+      border: 1px solid #174d79;
+    }
+
+    .back-btn:hover {
+      background: #103b61;
+    }
+
+    .page-title {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .page-title h2 {
+      color: #39a9ff;
+      font-size: 32px;
+      margin-bottom: 8px;
+    }
+
+    .page-title p {
+      color: #91a9c3;
+    }
+
+    /* SECTION CARDS */
+    .section-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .section-card {
+      background: #091827;
+      border: 1px solid #143a60;
+      border-radius: 14px;
+      padding: 24px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .section-card:hover {
+      border-color: #1b9aff;
+      background: #0b1e32;
+      transform: translateY(-3px);
+    }
+
+    .section-card h3 {
+      color: white;
+      font-size: 18px;
+    }
+
+    .section-card span {
+      display: block;
+      color: #5dbbff;
+      margin-top: 8px;
+      font-size: 13px;
+    }
+
+    /* CONTENT */
+    .content-box {
+      background: #081522;
+      border: 1px solid #143a60;
+      border-radius: 16px;
+      padding: 25px;
+    }
+
+    .content-title {
+      text-align: center;
+      margin-bottom: 22px;
+    }
+
+    .content-title h2 {
+      color: #39a9ff;
+      font-size: 28px;
+    }
+
+    /* GOOGLE SLIDES */
+    .slides-box {
+      width: 100%;
+      background: #000;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid #17476f;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.35);
+    }
+
+    .slides-box iframe {
+      display: block;
+      width: 100%;
+      height: 750px;
+      border: 0;
+    }
+
+    /* PDF */
+    .pdf-box {
+      width: 100%;
+      background: #000;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid #17476f;
+    }
+
+    .pdf-box iframe {
+      display: block;
+      width: 100%;
+      height: 800px;
+      border: 0;
+    }
+
+    /* EMPTY CONTENT */
+    .empty-content {
+      text-align: center;
+      padding: 80px 20px;
+      color: #8299b2;
+    }
+
+    .empty-content h3 {
+      color: #39a9ff;
+      margin-bottom: 10px;
+      font-size: 23px;
+    }
+
+    /* DISCORD */
+    .discord-section {
+      text-align: center;
+      margin-top: 45px;
+      padding: 25px;
+      background: #081827;
+      border: 1px solid #143a60;
+      border-radius: 15px;
+    }
+
+    .discord-section p {
+      color: #9bb2ca;
+      margin-bottom: 15px;
+    }
+
+    .discord-btn {
+      display: inline-block;
+      text-decoration: none;
+      background: #168cff;
+      color: white;
+      padding: 13px 25px;
+      border-radius: 9px;
+      font-weight: bold;
+      transition: 0.2s;
+    }
+
+    .discord-btn:hover {
+      background: #0b72d1;
+      transform: translateY(-2px);
+    }
+
+    /* MOBILE */
+    @media (max-width: 750px) {
+
+      header {
+        padding: 13px 16px;
+      }
+
+      .brand h1 {
+        font-size: 19px;
+      }
+
+      .brand p {
+        font-size: 11px;
+      }
+
+      .brand img {
+        width: 45px;
+        height: 45px;
+      }
+
+      .hero {
+        padding-top: 25px;
+      }
+
+      .hero img {
+        width: 115px;
+        height: 115px;
+      }
+
+      .hero h2 {
+        font-size: 29px;
+      }
+
+      .sectors {
+        grid-template-columns: 1fr;
+      }
+
+      .section-list {
+        grid-template-columns: 1fr;
+      }
+
+      .sector-card {
+        padding: 24px;
+      }
+
+      .slides-box iframe {
+        height: 600px;
+      }
+
+      .pdf-box iframe {
+        height: 650px;
+      }
+
+      .content-box {
+        padding: 12px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<header>
-
-    <div class="logo-area">
-        <img src="logo.png" alt="مقاطعة امباير">
-        <h2>مقاطعة امباير</h2>
+  <!-- HEADER -->
+  <header>
+    <div class="brand">
+      <img src="logo.png" alt="EMP">
+      <div>
+        <h1>مقاطعة امباير</h1>
+        <p>دليل وتدريب القطاعات</p>
+      </div>
     </div>
+  </header>
 
-</header>
 
-
-<!-- الصفحة الرئيسية -->
-
-<main class="home-page" id="homePage">
+  <!-- HOME -->
+  <main id="homePage" class="home-page">
 
     <section class="hero">
+      <img src="logo.png" alt="مقاطعة امباير">
 
-        <img src="logo.png" alt="مقاطعة امباير">
+      <h2>مقاطعة امباير</h2>
 
-        <h1>دليل مقاطعة امباير</h1>
+      <p>
+        الموقع الرسمي لدليل وتدريب القطاعات
+      </p>
+    </section>
 
-        <p>
-            جميع الأدلة والدورات والقوانين الخاصة بقطاعات المقاطعة
-        </p>
+
+    <!-- SEARCH -->
+    <div class="search-box">
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="ابحث عن قطاع أو دورة..."
+        oninput="searchSectors()"
+      >
+    </div>
+
+
+    <!-- SECTORS -->
+    <section class="sectors" id="sectorsContainer">
+
+      <div class="sector-card" onclick="openSector(0)">
+        <h3>الهلال الأحمر</h3>
+        <p>دليل ودورات الهلال الأحمر</p>
+      </div>
+
+      <div class="sector-card" onclick="openSector(1)">
+        <h3>الأمن العام</h3>
+        <p>دليل ودورات الأمن العام</p>
+      </div>
+
+      <div class="sector-card" onclick="openSector(2)">
+        <h3>أمن المنشآت</h3>
+        <p>دليل ودورات أمن المنشآت</p>
+      </div>
+
+      <div class="sector-card" onclick="openSector(3)">
+        <h3>الميكانيكي</h3>
+        <p>دليل ودورات الميكانيكي</p>
+      </div>
 
     </section>
 
 
-    <div class="container">
+    <!-- DISCORD -->
+    <div class="discord-section">
+      <p>للانضمام إلى ديسكورد مقاطعة امباير</p>
 
-        <div class="search-box">
+      <a
+        class="discord-btn"
+        href="https://discord.gg/GUmjE2xA5"
+        target="_blank"
+      >
+        دخول سيرفر الديسكورد
+      </a>
+    </div>
 
-            <input
-                type="text"
-                id="searchInput"
-                placeholder="ابحث عن قطاع..."
-                oninput="searchSectors()"
-            >
-
-        </div>
-
-
-        <div class="grid" id="sectorGrid">
-
-
-            <!-- الهلال الأحمر -->
-
-            <div
-                class="card sector-item"
-                data-name="الهلال الأحمر"
-                onclick="openSector('redcrescent')"
-            >
-
-                <div class="card-icon">🚑</div>
-
-                <h3>الهلال الأحمر</h3>
-
-                <p>
-                    دليل الهلال الأحمر والدورات والقوانين والمخالفات.
-                </p>
-
-            </div>
+  </main>
 
 
-            <!-- الأمن العام -->
+  <!-- SECTOR PAGE -->
+  <section id="sectorPage" class="sector-page">
 
-            <div
-                class="card sector-item"
-                data-name="الأمن العام"
-                onclick="openSector('publicsecurity')"
-            >
+    <div class="back-btn" onclick="goHome()">
+      ← العودة للرئيسية
+    </div>
 
-                <div class="card-icon">👮</div>
+    <div class="page-title">
+      <h2 id="sectorTitle"></h2>
+      <p id="sectorDescription"></p>
+    </div>
 
-                <h3>الأمن العام</h3>
+    <div class="section-list" id="sectionList"></div>
 
-                <p>
-                    دليل الأمن العام والدورات والقوانين والمخالفات.
-                </p>
-
-            </div>
+  </section>
 
 
-            <!-- أمن المنشآت -->
+  <!-- CONTENT PAGE -->
+  <section id="contentPage" class="content-page">
 
-            <div
-                class="card sector-item"
-                data-name="أمن المنشآت"
-                onclick="openSector('facilities')"
-            >
+    <div class="back-btn" onclick="backToSector()">
+      ← العودة للدليل
+    </div>
 
-                <div class="card-icon">🛡️</div>
+    <div class="content-box">
 
-                <h3>أمن المنشآت</h3>
+      <div class="content-title">
+        <h2 id="contentTitle"></h2>
+      </div>
 
-                <p>
-                    الدليل والدورات والقوانين والمخالفات.
-                </p>
+      <!-- GOOGLE SLIDES -->
+      <div id="slidesBox" class="slides-box" style="display:none;">
 
-            </div>
+        <iframe
+          src=""
+          id="slidesViewer"
+          frameborder="0"
+          allowfullscreen="true"
+          mozallowfullscreen="true"
+          webkitallowfullscreen="true">
+        </iframe>
 
-
-            <!-- الميكانيكي -->
-
-            <div
-                class="card sector-item"
-                data-name="الميكانيكي"
-                onclick="openSector('mechanic')"
-            >
-
-                <div class="card-icon">🔧</div>
-
-                <h3>الميكانيكي</h3>
-
-                <p>
-                    دليل الميكانيكي والدورات والقوانين والمخالفات.
-                </p>
-
-            </div>
+      </div>
 
 
-        </div>
+      <!-- PDF -->
+      <div id="pdfBox" class="pdf-box" style="display:none;">
 
-        <div class="no-result" id="noResult">
-            لا توجد نتائج مطابقة للبحث.
-        </div>
+        <iframe
+          src=""
+          id="pdfViewer">
+        </iframe>
+
+      </div>
+
+
+      <!-- EMPTY -->
+      <div id="emptyContent" class="empty-content">
+
+        <h3>المحتوى غير مضاف حتى الآن</h3>
+
+        <p>
+          سيتم إضافة محتوى هذه الدورة قريباً.
+        </p>
+
+      </div>
 
     </div>
 
-</main>
+  </section>
 
 
+  <script>
 
-<!-- صفحات القطاعات -->
+    /*
+      بيانات القطاعات
+    */
 
-<section class="sector-page" id="sectorPage">
+    const sectors = [
 
-    <div class="container">
+      {
+        name: "الهلال الأحمر",
 
-        <div class="page-title">
+        description: "دليل ودورات الهلال الأحمر",
 
-            <h2 id="sectorTitle"></h2>
+        sections: [
 
-            <button class="back-btn" onclick="goHome()">
-                ← العودة للقطاعات
-            </button>
+          {
+            name: "دليل الهلال",
+            type: "slides",
 
-        </div>
+            url: "https://docs.google.com/presentation/d/e/2PACX-1vRHpmAeIX46J5GfYeDzGetiTXsC3fRWtfl4z5x2oQcRhUY4CtMy5Ee3t_o3sQYCkhW6f3Xsum455wdE/pubembed?start=false&loop=false&delayms=3000"
+          },
 
-        <div class="grid" id="sectionGrid"></div>
+          {
+            name: "دورة العمليات",
+            type: "none"
+          },
 
-    </div>
+          {
+            name: "دورة الجناح الطبي",
+            type: "none"
+          },
 
-</section>
+          {
+            name: "دورة الإشراف",
+            type: "none"
+          },
 
+          {
+            name: "المخالفات",
+            type: "none"
+          },
 
-
-<!-- صفحة المحتوى -->
-
-<section class="content-page" id="contentPage">
-
-    <div class="container">
-
-        <div class="page-title">
-
-            <h2 id="contentTitle"></h2>
-
-            <button class="back-btn" onclick="backToSector()">
-                ← العودة للقطاع
-            </button>
-
-        </div>
-
-
-        <div class="content-box">
-
-            <p id="contentText"></p>
-
-            <div
-                class="pdf-box"
-                id="pdfContainer"
-                style="display:none;"
-            >
-
-                <iframe
-                    id="pdfViewer"
-                    src=""
-                    title="دليل مقاطعة امباير"
-                ></iframe>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<footer>
-
-    جميع الحقوق محفوظة © مقاطعة امباير
-
-</footer>
-
-
-
-<script>
-
-
-const sectors = {
-
-    redcrescent: {
-
-        name:"الهلال الأحمر",
-
-        icon:"🚑",
-
-        sections:[
-
-            {
-                name:"دليل الهلال",
-                icon:"📘",
-                description:"الدليل الكامل للهلال الأحمر",
-                pdf:"دليل-الهلال-الأحمر.pdf"
-            },
-
-            {
-                name:"دورة العمليات",
-                icon:"📚",
-                description:"دورة العمليات",
-                pdf:null
-            },
-
-            {
-                name:"دورة الجناح الطبي",
-                icon:"🏥",
-                description:"دورة الجناح الطبي",
-                pdf:null
-            },
-
-            {
-                name:"دورة الإشراف",
-                icon:"👨‍💼",
-                description:"دورة الإشراف",
-                pdf:null
-            },
-
-            {
-                name:"المخالفات",
-                icon:"⚠️",
-                description:"مخالفات القطاع",
-                pdf:null
-            },
-
-            {
-                name:"قوانين هامة",
-                icon:"📜",
-                description:"القوانين الهامة",
-                pdf:null
-            }
+          {
+            name: "قوانين هامة",
+            type: "none"
+          }
 
         ]
+      },
 
-    },
 
+      {
+        name: "الأمن العام",
 
-    publicsecurity: {
+        description: "دليل ودورات الأمن العام",
 
-        name:"الأمن العام",
+        sections: [
 
-        icon:"👮",
+          {
+            name: "دليل الأمن العام",
+            type: "none"
+          },
 
-        sections:[
+          {
+            name: "دورة العمليات",
+            type: "none"
+          },
 
-            {
-                name:"دليل الأمن العام",
-                icon:"📘",
-                description:"الدليل العام للأمن العام",
-                pdf:null
-            },
+          {
+            name: "دورة المورو",
+            type: "none"
+          },
 
-            {
-                name:"دورة العمليات",
-                icon:"📚",
-                description:"دورة العمليات",
-                pdf:null
-            },
+          {
+            name: "دورة الجناح الجوي",
+            type: "none"
+          },
 
-            {
-                name:"دورة المورو",
-                icon:"🚔",
-                description:"دورة المورو",
-                pdf:null
-            },
+          {
+            name: "المخالفات",
+            type: "none"
+          },
 
-            {
-                name:"دورة الجناح الجوي",
-                icon:"🚁",
-                description:"دورة الجناح الجوي",
-                pdf:null
-            },
-
-            {
-                name:"المخالفات",
-                icon:"⚠️",
-                description:"مخالفات القطاع",
-                pdf:null
-            },
-
-            {
-                name:"قوانين هامة",
-                icon:"📜",
-                description:"القوانين الهامة",
-                pdf:null
-            }
+          {
+            name: "قوانين هامة",
+            type: "none"
+          }
 
         ]
+      },
 
-    },
 
+      {
+        name: "أمن المنشآت",
 
-    facilities: {
+        description: "دليل ودورات أمن المنشآت",
 
-        name:"أمن المنشآت",
+        sections: [
 
-        icon:"🛡️",
+          {
+            name: "الدليل العام",
+            type: "none"
+          },
 
-        sections:[
+          {
+            name: "دورة العمليات",
+            type: "none"
+          },
 
-            {
-                name:"الدليل العام",
-                icon:"📘",
-                description:"الدليل العام لأمن المنشآت",
-                pdf:null
-            },
+          {
+            name: "دورة تأهيل الأفراد",
+            type: "none"
+          },
 
-            {
-                name:"دورة العمليات",
-                icon:"📚",
-                description:"دورة العمليات",
-                pdf:null
-            },
+          {
+            name: "دورة القوات الخاصة",
+            type: "none"
+          },
 
-            {
-                name:"دورة تأهيل الأفراد",
-                icon:"🎓",
-                description:"دورة تأهيل الأفراد",
-                pdf:null
-            },
+          {
+            name: "المخالفات",
+            type: "none"
+          },
 
-            {
-                name:"دورة القوات الخاصة",
-                icon:"🛡️",
-                description:"دورة القوات الخاصة",
-                pdf:null
-            },
-
-            {
-                name:"المخالفات",
-                icon:"⚠️",
-                description:"مخالفات القطاع",
-                pdf:null
-            },
-
-            {
-                name:"قوانين هامة",
-                icon:"📜",
-                description:"القوانين الهامة",
-                pdf:null
-            }
+          {
+            name: "قوانين هامة",
+            type: "none"
+          }
 
         ]
+      },
 
-    },
 
+      {
+        name: "الميكانيكي",
 
-    mechanic: {
+        description: "دليل ودورات الميكانيكي",
 
-        name:"الميكانيكي",
+        sections: [
 
-        icon:"🔧",
+          {
+            name: "الدليل العام",
+            type: "none"
+          },
 
-        sections:[
+          {
+            name: "دورة العمليات",
+            type: "none"
+          },
 
-            {
-                name:"الدليل العام",
-                icon:"📘",
-                description:"الدليل العام للميكانيكي",
-                pdf:null
-            },
+          {
+            name: "دورة التعديل والتزويد",
+            type: "none"
+          },
 
-            {
-                name:"دورة العمليات",
-                icon:"📚",
-                description:"دورة العمليات",
-                pdf:null
-            },
+          {
+            name: "المخالفات",
+            type: "none"
+          },
 
-            {
-                name:"دورة التعديل والتزويد",
-                icon:"🔧",
-                description:"دورة التعديل والتزويد",
-                pdf:null
-            },
-
-            {
-                name:"المخالفات",
-                icon:"⚠️",
-                description:"مخالفات القطاع",
-                pdf:null
-            },
-
-            {
-                name:"قوانين هامة",
-                icon:"📜",
-                description:"القوانين الهامة",
-                pdf:null
-            }
+          {
+            name: "قوانين هامة",
+            type: "none"
+          }
 
         ]
+      }
 
-    }
-
-};
-
+    ];
 
 
-let currentSector = null;
+    let currentSector = 0;
 
 
+    /*
+      فتح القطاع
+    */
 
-function openSector(sectorId){
+    function openSector(index) {
 
-    currentSector = sectorId;
+      currentSector = index;
 
-    const sector = sectors[sectorId];
+      const sector = sectors[index];
 
-    document.getElementById("homePage").style.display = "none";
+      document.getElementById("homePage").style.display = "none";
 
-    document.getElementById("contentPage").style.display = "none";
+      document.getElementById("contentPage").style.display = "none";
 
-    document.getElementById("sectorPage").style.display = "block";
+      document.getElementById("sectorPage").style.display = "block";
 
-    document.getElementById("sectorTitle").innerText =
-        sector.icon + "  " + sector.name;
+      document.getElementById("sectorTitle").textContent = sector.name;
 
-
-    const sectionGrid =
-        document.getElementById("sectionGrid");
-
-    sectionGrid.innerHTML = "";
+      document.getElementById("sectorDescription").textContent =
+        sector.description;
 
 
-    sector.sections.forEach((section,index)=>{
+      const list = document.getElementById("sectionList");
+
+      list.innerHTML = "";
+
+
+      sector.sections.forEach((section, index) => {
 
         const card = document.createElement("div");
 
         card.className = "section-card";
 
-        card.onclick = function(){
+        card.onclick = function() {
 
-            openSection(index);
+          openSection(index);
 
         };
 
 
         card.innerHTML = `
-
-            <div class="section-icon">
-                ${section.icon}
-            </div>
-
-            <div>
-
-                <h3>${section.name}</h3>
-
-                <p>${section.description}</p>
-
-            </div>
-
+          <h3>${section.name}</h3>
+          <span>اضغط لفتح المحتوى</span>
         `;
 
 
-        sectionGrid.appendChild(card);
+        list.appendChild(card);
 
-    });
-
-    window.scrollTo(0,0);
-
-}
-
-
-
-function openSection(index){
-
-    const sector = sectors[currentSector];
-
-    const section = sector.sections[index];
-
-
-    document.getElementById("sectorPage").style.display = "none";
-
-    document.getElementById("contentPage").style.display = "block";
-
-
-    document.getElementById("contentTitle").innerText =
-        section.icon + "  " + section.name;
-
-
-    const contentText =
-        document.getElementById("contentText");
-
-    const pdfContainer =
-        document.getElementById("pdfContainer");
-
-    const pdfViewer =
-        document.getElementById("pdfViewer");
-
-
-    if(section.pdf){
-
-        contentText.innerText =
-            "يمكنك مشاهدة الدليل من خلال الملف الموجود بالأسفل.";
-
-        pdfContainer.style.display = "block";
-
-        pdfViewer.src = encodeURI(section.pdf);
-
-    }else{
-
-        contentText.innerText =
-            "سيتم إضافة محتوى هذا القسم قريبًا.";
-
-        pdfContainer.style.display = "none";
-
-        pdfViewer.src = "";
+      });
 
     }
 
-    window.scrollTo(0,0);
 
-}
+    /*
+      فتح القسم
+    */
 
+    function openSection(index) {
 
+      const sector = sectors[currentSector];
 
-function backToSector(){
-
-    document.getElementById("contentPage").style.display = "none";
-
-    document.getElementById("sectorPage").style.display = "block";
-
-    window.scrollTo(0,0);
-
-}
+      const section = sector.sections[index];
 
 
+      document.getElementById("sectorPage").style.display = "none";
 
-function goHome(){
+      document.getElementById("contentPage").style.display = "block";
 
-    document.getElementById("sectorPage").style.display = "none";
-
-    document.getElementById("contentPage").style.display = "none";
-
-    document.getElementById("homePage").style.display = "block";
-
-    window.scrollTo(0,0);
-
-}
+      document.getElementById("contentTitle").textContent =
+        section.name;
 
 
+      const slidesBox = document.getElementById("slidesBox");
 
-function searchSectors(){
+      const pdfBox = document.getElementById("pdfBox");
 
-    const value =
+      const emptyContent = document.getElementById("emptyContent");
+
+      const slidesViewer = document.getElementById("slidesViewer");
+
+      const pdfViewer = document.getElementById("pdfViewer");
+
+
+      slidesBox.style.display = "none";
+
+      pdfBox.style.display = "none";
+
+      emptyContent.style.display = "none";
+
+
+      slidesViewer.src = "";
+
+      pdfViewer.src = "";
+
+
+      /*
+        Google Slides
+      */
+
+      if (section.type === "slides") {
+
+        slidesBox.style.display = "block";
+
+        slidesViewer.src = section.url;
+
+        return;
+
+      }
+
+
+      /*
+        PDF
+      */
+
+      if (section.type === "pdf") {
+
+        pdfBox.style.display = "block";
+
+        pdfViewer.src = encodeURI(section.url);
+
+        return;
+
+      }
+
+
+      /*
+        لا يوجد محتوى
+      */
+
+      emptyContent.style.display = "block";
+
+    }
+
+
+    /*
+      العودة للقطاع
+    */
+
+    function backToSector() {
+
+      document.getElementById("contentPage").style.display = "none";
+
+      document.getElementById("sectorPage").style.display = "block";
+
+    }
+
+
+    /*
+      العودة للرئيسية
+    */
+
+    function goHome() {
+
+      document.getElementById("sectorPage").style.display = "none";
+
+      document.getElementById("contentPage").style.display = "none";
+
+      document.getElementById("homePage").style.display = "block";
+
+    }
+
+
+    /*
+      البحث
+    */
+
+    function searchSectors() {
+
+      const value =
         document.getElementById("searchInput").value
-        .trim()
-        .toLowerCase();
+        .toLowerCase()
+        .trim();
 
 
-    const cards =
-        document.querySelectorAll(".sector-item");
-
-    let found = 0;
+      const cards =
+        document.querySelectorAll(".sector-card");
 
 
-    cards.forEach(card=>{
+      cards.forEach((card) => {
 
-        const name =
-            card.dataset.name.toLowerCase();
+        const text =
+          card.textContent.toLowerCase();
 
-        if(name.includes(value)){
 
-            card.style.display = "block";
+        if (text.includes(value)) {
 
-            found++;
+          card.style.display = "block";
 
-        }else{
+        } else {
 
-            card.style.display = "none";
+          card.style.display = "none";
 
         }
 
-    });
+      });
 
+    }
 
-    document.getElementById("noResult").style.display =
-        found === 0 ? "block" : "none";
-
-}
-
-
-</script>
+  </script>
 
 </body>
 </html>
