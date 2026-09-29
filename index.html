@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Empire Guide | دليل القطاعات</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Tahoma, Arial, sans-serif;
+            background: #0b0f14;
+            color: #ffffff;
+            min-height: 100vh;
+        }
+
+        .header {
+            padding: 25px 8%;
+            border-bottom: 1px solid #222a33;
+            background: #0d1218;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: #e63946;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 80px 20px 60px;
+            background:
+                radial-gradient(circle at top, #26313d 0%, #0b0f14 55%);
+        }
+
+        .hero h1 {
+            font-size: 46px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: #e63946;
+        }
+
+        .hero p {
+            color: #aeb8c2;
+            font-size: 18px;
+            line-height: 1.8;
+            max-width: 700px;
+            margin: auto;
+        }
+
+        .search-box {
+            max-width: 600px;
+            margin: 35px auto 0;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 17px 22px;
+            border-radius: 12px;
+            border: 1px solid #303b46;
+            background: #151b22;
+            color: white;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .search-box input:focus {
+            border-color: #e63946;
+        }
+
+        .sections {
+            padding: 50px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .section-title h2 {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #8f9aa5;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 22px;
+        }
+
+        .card {
+            background: #121820;
+            border: 1px solid #252f39;
+            border-radius: 18px;
+            padding: 30px 20px;
+            text-align: center;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            border-color: #e63946;
+            box-shadow: 0 10px 35px rgba(230, 57, 70, 0.15);
+        }
+
+        .icon {
+            width: 75px;
+            height: 75px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #1c252e;
+            font-size: 35px;
+        }
+
+        .card h3 {
+            font-size: 21px;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: #8995a0;
+            line-height: 1.7;
+            font-size: 14px;
+        }
+
+        .footer {
+            margin-top: 50px;
+            padding: 30px;
+            text-align: center;
+            border-top: 1px solid #222a33;
+            color: #6f7a85;
+            background: #0d1218;
+        }
+
+        @media (max-width: 900px) {
+            .cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding-top: 55px;
+            }
+
+            .hero h1 {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="logo">EMPIRE GUIDE</div>
+    </header>
+
+    <section class="hero">
+
+        <h1>
+            دليل <span>القطاعات</span>
+        </h1>
+
+        <p>
+            المرجع التعليمي والتدريبي لجميع قطاعات المدينة.
+            اختر القطاع الذي تريد معرفة الدليل أو الدورات الخاصة به.
+        </p>
+
+        <div class="search-box">
+            <input
+                type="text"
+                id="search"
+                placeholder="ابحث عن قطاع أو دورة أو دليل..."
+            >
+        </div>
+
+    </section>
+
+    <section class="sections">
+
+        <div class="section-title">
+            <h2>قطاعات المدينة</h2>
+            <p>اختر القطاع الذي تريد الاطلاع على الدليل الخاص به</p>
+        </div>
+
+        <div class="cards" id="cards">
+
+            <div class="card" data-name="الهلال الأحمر">
+                <div class="icon">🚑</div>
+                <h3>الهلال الأحمر</h3>
+                <p>
+                    الدليل الكامل والدورات والتعليمات الخاصة بالهلال الأحمر.
+                </p>
+            </div>
+
+            <div class="card" data-name="الأمن العام">
+                <div class="icon">👮</div>
+                <h3>الأمن العام</h3>
+                <p>
+                    الدليل والدورات والقوانين الخاصة بقطاع الأمن العام.
+                </p>
+            </div>
+
+            <div class="card" data-name="أمن المنشآت">
+                <div class="icon">🛡️</div>
+                <h3>أمن المنشآت</h3>
+                <p>
+                    جميع الأدلة والدورات والتعليمات الخاصة بأمن المنشآت.
+                </p>
+            </div>
+
+            <div class="card" data-name="الميكانيكي">
+                <div class="icon">🔧</div>
+                <h3>الميكانيكي</h3>
+                <p>
+                    دليل الميكانيكي والدورات والأنظمة الخاصة بالقطاع.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <footer class="footer">
+        Empire RolePlay © جميع الحقوق محفوظة
+    </footer>
+
+    <script>
+
+        const search = document.getElementById("search");
+        const cards = document.querySelectorAll(".card");
+
+        search.addEventListener("input", function () {
+
+            const value = search.value.toLowerCase();
+
+            cards.forEach(function(card) {
+
+                const name = card.dataset.name.toLowerCase();
+
+                if (name.includes(value)) {
+                    card.style.display = "block";
+                } else {
+                    card.style.display = "none";
+                }
+
+            });
+
+        });
+
+    </script>
+
+</body>
+</html>
