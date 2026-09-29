@@ -316,13 +316,13 @@
 
         <div class="cards" id="cards">
 
-            <div class="card">
-                <div class="card-icon">🚑</div>
-                <h3>الهلال الأحمر</h3>
-                <p>
-                    الدليل الكامل والدورات والتعليمات الخاصة بالهلال الأحمر.
-                </p>
-            </div>
+          <div class="card" onclick="openSection('redcrescent')">
+    <div class="card-icon">🚑</div>
+    <h3>الهلال الأحمر</h3>
+    <p>
+        دليل الهلال الأحمر والدورات والقوانين والمخالفات.
+    </p>
+</div>
 
             <div class="card">
                 <div class="card-icon">👮</div>
@@ -383,8 +383,14 @@
             });
 
         }
+        function openSection(section) {
+    if (section === "redcrescent") {
+        alert("قسم الهلال الأحمر");
+    }
+}
 
     </script>
+
 
 </body>
 </html>
