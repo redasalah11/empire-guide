@@ -1,524 +1,351 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>مقاطعة امباير</title>
-
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: Tahoma, Arial, sans-serif;
-        }
-
-        body {
-            background:
-                radial-gradient(circle at top, rgba(22,131,255,0.12), transparent 35%),
-                #070b12;
-            color: #ffffff;
-            min-height: 100vh;
-        }
-
-        button,
-        input {
-            font-family: inherit;
-        }
-
-        /* ================= HEADER ================= */
-
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background: rgba(7,11,18,0.94);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(22,131,255,0.25);
-        }
-
-        .header-inner {
-            max-width: 1200px;
-            margin: auto;
-            padding: 14px 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .brand img {
-            width: 52px;
-            height: 52px;
-            object-fit: contain;
-            border-radius: 12px;
-            border: 1px solid rgba(22,131,255,0.35);
-        }
-
-        .brand h1 {
-            font-size: 22px;
-            color: #1683ff;
-        }
-
-        .brand span {
-            display: block;
-            color: #8995a5;
-            font-size: 12px;
-            margin-top: 3px;
-        }
-
-        /* ================= MAIN ================= */
-
-        main {
-            max-width: 1200px;
-            margin: auto;
-            padding: 50px 20px;
-        }
-
-        .page {
-            display: none;
-        }
-
-        .page.active {
-            display: block;
-        }
-
-        /* ================= HERO ================= */
-
-        .hero {
-            text-align: center;
-            padding: 45px 20px 55px;
-        }
-
-        .hero-logo {
-            width: 125px;
-            height: 125px;
-            object-fit: contain;
-            border-radius: 25px;
-            margin-bottom: 22px;
-            border: 1px solid rgba(22,131,255,0.35);
-            box-shadow: 0 0 45px rgba(22,131,255,0.16);
-        }
-
-        .hero h2 {
-            font-size: 42px;
-            margin-bottom: 14px;
-        }
-
-        .hero h2 span {
-            color: #1683ff;
-        }
-
-        .hero p {
-            color: #8995a5;
-            font-size: 17px;
-            max-width: 700px;
-            margin: auto;
-            line-height: 1.8;
-        }
-
-        /* ================= SEARCH ================= */
-
-        .search-box {
-            max-width: 650px;
-            margin: 0 auto 45px;
-        }
-
-        .search-box input {
-            width: 100%;
-            padding: 17px 22px;
-            background: #0c121c;
-            border: 1px solid #1c2b3d;
-            border-radius: 14px;
-            outline: none;
-            color: #ffffff;
-            font-size: 16px;
-            transition: 0.3s;
-        }
-
-        .search-box input:focus {
-            border-color: #1683ff;
-            box-shadow: 0 0 20px rgba(22,131,255,0.12);
-        }
-
-        .search-box input::placeholder {
-            color: #687486;
-        }
-
-        /* ================= TITLES ================= */
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 25px;
-        }
-
-        .section-title h3 {
-            font-size: 27px;
-            margin-bottom: 8px;
-        }
-
-        .section-title p {
-            color: #748196;
-        }
-
-        /* ================= CARDS ================= */
-
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-        }
-
-        .card {
-            background: linear-gradient(
-                145deg,
-                rgba(15,24,37,0.96),
-                rgba(9,14,22,0.96)
-            );
-            border: 1px solid #1b2a3c;
-            border-radius: 18px;
-            padding: 28px 22px;
-            cursor: pointer;
-            transition: 0.3s;
-            text-align: center;
-            min-height: 215px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .card:hover {
-            transform: translateY(-6px);
-            border-color: #1683ff;
-            box-shadow: 0 12px 35px rgba(22,131,255,0.12);
-        }
-
-        .card-icon {
-            width: 70px;
-            height: 70px;
-            border-radius: 18px;
-            background: rgba(22,131,255,0.10);
-            border: 1px solid rgba(22,131,255,0.25);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 35px;
-            margin-bottom: 18px;
-        }
-
-        .card h3 {
-            font-size: 21px;
-            margin-bottom: 10px;
-        }
-
-        .card p {
-            color: #7f8b9d;
-            line-height: 1.7;
-            font-size: 14px;
-        }
-
-        /* ================= DISCORD ================= */
-
-        .discord-area {
-            text-align: center;
-            margin-top: 55px;
-            padding: 35px 20px;
-            background: linear-gradient(
-                145deg,
-                rgba(22,131,255,0.08),
-                rgba(9,14,22,0.7)
-            );
-            border: 1px solid rgba(22,131,255,0.2);
-            border-radius: 20px;
-        }
-
-        .discord-area h3 {
-            font-size: 24px;
-            margin-bottom: 8px;
-        }
-
-        .discord-area p {
-            color: #7f8b9d;
-            margin-bottom: 20px;
-        }
-
-        .discord-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 14px 28px;
-            background: #5865F2;
-            color: #ffffff;
-            text-decoration: none;
-            border-radius: 12px;
-            font-size: 16px;
-            font-weight: bold;
-            transition: 0.3s;
-            box-shadow: 0 8px 25px rgba(88,101,242,0.22);
-        }
-
-        .discord-btn:hover {
-            transform: translateY(-3px);
-            background: #4752c4;
-            box-shadow: 0 12px 30px rgba(88,101,242,0.3);
-        }
-
-        .discord-icon {
-            font-size: 22px;
-        }
-
-        /* ================= SECTOR PAGE ================= */
-
-        .back-btn {
-            border: 1px solid #23354b;
-            background: #0d1520;
-            color: #ffffff;
-            padding: 12px 20px;
-            border-radius: 12px;
-            cursor: pointer;
-            margin-bottom: 30px;
-            transition: 0.3s;
-            font-size: 15px;
-        }
-
-        .back-btn:hover {
-            background: #1683ff;
-            border-color: #1683ff;
-        }
-
-        .sector-header {
-            text-align: center;
-            padding: 20px 0 40px;
-        }
-
-        .sector-icon {
-            font-size: 55px;
-            margin-bottom: 15px;
-        }
-
-        .sector-header h2 {
-            font-size: 35px;
-            color: #1683ff;
-            margin-bottom: 10px;
-        }
-
-        .sector-header p {
-            color: #7f8b9d;
-            font-size: 15px;
-        }
-
-        .section-card {
-            background: #0c121c;
-            border: 1px solid #1b2a3c;
-            border-radius: 16px;
-            padding: 22px;
-            cursor: pointer;
-            transition: 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 18px;
-        }
-
-        .section-card:hover {
-            border-color: #1683ff;
-            transform: translateY(-3px);
-            background: #0e1723;
-        }
-
-        .section-number {
-            min-width: 48px;
-            height: 48px;
-            border-radius: 13px;
-            background: rgba(22,131,255,0.12);
-            border: 1px solid rgba(22,131,255,0.25);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #1683ff;
-            font-weight: bold;
-            font-size: 18px;
-        }
-
-        .section-info h3 {
-            font-size: 18px;
-            margin-bottom: 6px;
-        }
-
-        .section-info p {
-            color: #6f7d90;
-            font-size: 13px;
-        }
-
-        /* ================= CONTENT ================= */
-
-        .content-box {
-            max-width: 900px;
-            margin: 20px auto;
-            background: #0c121c;
-            border: 1px solid #1b2a3c;
-            border-radius: 18px;
-            padding: 35px;
-        }
-
-        .content-box h2 {
-            color: #1683ff;
-            margin-bottom: 20px;
-            font-size: 28px;
-        }
-
-        .content-box p {
-            color: #9aa6b7;
-            line-height: 2;
-            font-size: 16px;
-        }
-
-        .coming-soon {
-            margin-top: 25px;
-            padding: 20px;
-            border-radius: 14px;
-            background: rgba(22,131,255,0.07);
-            border: 1px dashed rgba(22,131,255,0.35);
-            color: #8d9aad;
-            text-align: center;
-        }
-
-        /* ================= FOOTER ================= */
-
-        footer {
-            margin-top: 80px;
-            padding: 30px 20px;
-            border-top: 1px solid #152233;
-            text-align: center;
-            color: #5f6c7d;
-            font-size: 13px;
-        }
-
-        footer strong {
-            color: #1683ff;
-        }
-
-        /* ================= RESPONSIVE ================= */
-
-        @media (max-width: 950px) {
-            .cards {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 600px) {
-
-            .header-inner {
-                padding: 12px 15px;
-            }
-
-            .brand h1 {
-                font-size: 18px;
-            }
-
-            .brand span {
-                font-size: 10px;
-            }
-
-            .brand img {
-                width: 44px;
-                height: 44px;
-            }
-
-            main {
-                padding: 30px 15px;
-            }
-
-            .hero {
-                padding: 30px 10px 40px;
-            }
-
-            .hero h2 {
-                font-size: 30px;
-            }
-
-            .hero p {
-                font-size: 14px;
-            }
-
-            .hero-logo {
-                width: 100px;
-                height: 100px;
-            }
-
-            .cards {
-                grid-template-columns: 1fr;
-            }
-
-            .sector-header h2 {
-                font-size: 28px;
-            }
-
-            .content-box {
-                padding: 24px 18px;
-            }
-
-            .discord-area {
-                margin-top: 40px;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>مقاطعة امباير</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Tahoma, Arial, sans-serif;
+}
+
+body{
+    background:#070b12;
+    color:#fff;
+    min-height:100vh;
+}
+
+header{
+    height:75px;
+    background:#0b111c;
+    border-bottom:1px solid #1683ff55;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 6%;
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.logo-area{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.logo-area img{
+    width:48px;
+    height:48px;
+    object-fit:contain;
+    border-radius:10px;
+}
+
+.logo-area h2{
+    color:#1683ff;
+    font-size:22px;
+}
+
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+}
+
+.hero{
+    text-align:center;
+    padding:70px 20px 45px;
+}
+
+.hero img{
+    width:120px;
+    height:120px;
+    object-fit:contain;
+    border-radius:20px;
+    margin-bottom:20px;
+    box-shadow:0 0 35px #1683ff33;
+}
+
+.hero h1{
+    font-size:42px;
+    color:#1683ff;
+    margin-bottom:12px;
+}
+
+.hero p{
+    color:#aab4c3;
+    font-size:17px;
+}
+
+.search-box{
+    max-width:600px;
+    margin:30px auto 50px;
+    position:relative;
+}
+
+.search-box input{
+    width:100%;
+    padding:17px 22px;
+    border-radius:12px;
+    border:1px solid #1683ff55;
+    background:#0d1522;
+    color:white;
+    outline:none;
+    font-size:16px;
+    text-align:right;
+}
+
+.search-box input:focus{
+    border-color:#1683ff;
+    box-shadow:0 0 15px #1683ff22;
+}
+
+.page-title{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:25px;
+}
+
+.page-title h2{
+    color:#1683ff;
+}
+
+.back-btn{
+    background:#1683ff;
+    border:none;
+    color:white;
+    padding:11px 20px;
+    border-radius:9px;
+    cursor:pointer;
+    font-size:15px;
+}
+
+.back-btn:hover{
+    background:#056dcc;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+    padding-bottom:50px;
+}
+
+.card{
+    background:#0d1522;
+    border:1px solid #1683ff33;
+    border-radius:15px;
+    padding:28px 20px;
+    cursor:pointer;
+    transition:.25s;
+    text-align:center;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    border-color:#1683ff;
+    box-shadow:0 10px 30px #1683ff18;
+}
+
+.card-icon{
+    font-size:45px;
+    margin-bottom:15px;
+}
+
+.card h3{
+    color:white;
+    margin-bottom:10px;
+    font-size:20px;
+}
+
+.card p{
+    color:#9ba7b8;
+    line-height:1.7;
+    font-size:14px;
+}
+
+.section-card{
+    background:#0d1522;
+    border:1px solid #1683ff33;
+    border-radius:14px;
+    padding:22px;
+    cursor:pointer;
+    transition:.25s;
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.section-card:hover{
+    border-color:#1683ff;
+    transform:translateY(-3px);
+    background:#101b2b;
+}
+
+.section-icon{
+    width:50px;
+    height:50px;
+    border-radius:12px;
+    background:#1683ff15;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:25px;
+    flex-shrink:0;
+}
+
+.section-card h3{
+    margin-bottom:5px;
+}
+
+.section-card p{
+    color:#8996a8;
+    font-size:13px;
+}
+
+.content-page{
+    display:none;
+    padding:40px 0 70px;
+}
+
+.content-box{
+    background:#0d1522;
+    border:1px solid #1683ff33;
+    border-radius:15px;
+    padding:25px;
+}
+
+.content-box h2{
+    color:#1683ff;
+    margin-bottom:15px;
+}
+
+.content-box p{
+    color:#aab4c3;
+    line-height:2;
+}
+
+.pdf-box{
+    margin-top:20px;
+    background:#05080d;
+    border:1px solid #1683ff33;
+    border-radius:12px;
+    overflow:hidden;
+}
+
+.pdf-box iframe{
+    width:100%;
+    height:750px;
+    border:none;
+}
+
+.home-page{
+    display:block;
+}
+
+.sector-page{
+    display:none;
+    padding:40px 0 70px;
+}
+
+footer{
+    border-top:1px solid #1683ff22;
+    text-align:center;
+    padding:25px;
+    color:#657286;
+    margin-top:30px;
+}
+
+.no-result{
+    display:none;
+    text-align:center;
+    color:#8894a5;
+    padding:30px;
+}
+
+@media(max-width:900px){
+    .grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:600px){
+
+    header{
+        padding:0 4%;
+    }
+
+    .logo-area h2{
+        font-size:18px;
+    }
+
+    .hero{
+        padding-top:45px;
+    }
+
+    .hero h1{
+        font-size:30px;
+    }
+
+    .grid{
+        grid-template-columns:1fr;
+    }
+
+    .page-title{
+        gap:15px;
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    .back-btn{
+        width:100%;
+    }
+
+    .pdf-box iframe{
+        height:600px;
+    }
+}
+
+</style>
 </head>
 
 <body>
 
 <header>
 
-    <div class="header-inner">
-
-        <div class="brand">
-
-            <img src="logo.png" alt="مقاطعة امباير">
-
-            <div>
-                <h1>مقاطعة امباير</h1>
-                <span>الدليل الرسمي للقطاعات</span>
-            </div>
-
-        </div>
-
+    <div class="logo-area">
+        <img src="logo.png" alt="مقاطعة امباير">
+        <h2>مقاطعة امباير</h2>
     </div>
 
 </header>
 
 
-<main>
+<!-- الصفحة الرئيسية -->
 
-    <!-- ================= HOME ================= -->
+<main class="home-page" id="homePage">
 
-    <section id="homePage" class="page active">
+    <section class="hero">
 
-        <div class="hero">
+        <img src="logo.png" alt="مقاطعة امباير">
 
-            <img
-                src="logo.png"
-                class="hero-logo"
-                alt="مقاطعة امباير"
-            >
+        <h1>دليل مقاطعة امباير</h1>
 
-            <h2>
-                دليل <span>مقاطعة امباير</span>
-            </h2>
+        <p>
+            جميع الأدلة والدورات والقوانين الخاصة بقطاعات المقاطعة
+        </p>
 
-            <p>
-                بوابتك للوصول إلى أدلة القطاعات والدورات والقوانين
-                والمخالفات بطريقة منظمة وسهلة.
-            </p>
+    </section>
 
-        </div>
 
+    <div class="container">
 
         <div class="search-box">
 
@@ -532,556 +359,576 @@
         </div>
 
 
-        <div class="section-title">
-
-            <h3>القطاعات</h3>
-
-            <p>
-                اختر القطاع للدخول إلى الدليل الخاص به
-            </p>
-
-        </div>
+        <div class="grid" id="sectorGrid">
 
 
-        <div
-            class="cards"
-            id="sectorCards"
-        ></div>
-
-
-        <!-- ================= DISCORD ================= -->
-
-        <div class="discord-area">
-
-            <h3>
-                انضم إلى مجتمع مقاطعة امباير
-            </h3>
-
-            <p>
-                ادخل إلى سيرفر الديسكورد الرسمي للمقاطعة
-            </p>
-
-            <a
-                class="discord-btn"
-                href="https://discord.gg/GUmjE2xA5"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-
-                <span class="discord-icon">💬</span>
-
-                دخول سيرفر الديسكورد
-
-            </a>
-
-        </div>
-
-    </section>
-
-
-    <!-- ================= SECTOR ================= -->
-
-    <section
-        id="sectorPage"
-        class="page"
-    >
-
-        <button
-            class="back-btn"
-            onclick="goHome()"
-        >
-            ← العودة للقطاعات
-        </button>
-
-
-        <div class="sector-header">
+            <!-- الهلال الأحمر -->
 
             <div
-                class="sector-icon"
-                id="sectorIcon"
-            ></div>
+                class="card sector-item"
+                data-name="الهلال الأحمر"
+                onclick="openSector('redcrescent')"
+            >
 
-            <h2
-                id="sectorTitle"
-            ></h2>
+                <div class="card-icon">🚑</div>
 
-            <p>
-                اختر القسم الذي تريد الدخول إليه
-            </p>
+                <h3>الهلال الأحمر</h3>
+
+                <p>
+                    دليل الهلال الأحمر والدورات والقوانين والمخالفات.
+                </p>
+
+            </div>
+
+
+            <!-- الأمن العام -->
+
+            <div
+                class="card sector-item"
+                data-name="الأمن العام"
+                onclick="openSector('publicsecurity')"
+            >
+
+                <div class="card-icon">👮</div>
+
+                <h3>الأمن العام</h3>
+
+                <p>
+                    دليل الأمن العام والدورات والقوانين والمخالفات.
+                </p>
+
+            </div>
+
+
+            <!-- أمن المنشآت -->
+
+            <div
+                class="card sector-item"
+                data-name="أمن المنشآت"
+                onclick="openSector('facilities')"
+            >
+
+                <div class="card-icon">🛡️</div>
+
+                <h3>أمن المنشآت</h3>
+
+                <p>
+                    الدليل والدورات والقوانين والمخالفات.
+                </p>
+
+            </div>
+
+
+            <!-- الميكانيكي -->
+
+            <div
+                class="card sector-item"
+                data-name="الميكانيكي"
+                onclick="openSector('mechanic')"
+            >
+
+                <div class="card-icon">🔧</div>
+
+                <h3>الميكانيكي</h3>
+
+                <p>
+                    دليل الميكانيكي والدورات والقوانين والمخالفات.
+                </p>
+
+            </div>
+
 
         </div>
 
+        <div class="no-result" id="noResult">
+            لا توجد نتائج مطابقة للبحث.
+        </div>
 
-        <div
-            class="cards"
-            id="sectionCards"
-        ></div>
+    </div>
 
-    </section>
+</main>
 
 
-    <!-- ================= CONTENT ================= -->
 
-    <section
-        id="contentPage"
-        class="page"
-    >
+<!-- صفحات القطاعات -->
 
-        <button
-            class="back-btn"
-            onclick="goSector()"
-        >
-            ← العودة للقطاع
-        </button>
+<section class="sector-page" id="sectorPage">
+
+    <div class="container">
+
+        <div class="page-title">
+
+            <h2 id="sectorTitle"></h2>
+
+            <button class="back-btn" onclick="goHome()">
+                ← العودة للقطاعات
+            </button>
+
+        </div>
+
+        <div class="grid" id="sectionGrid"></div>
+
+    </div>
+
+</section>
+
+
+
+<!-- صفحة المحتوى -->
+
+<section class="content-page" id="contentPage">
+
+    <div class="container">
+
+        <div class="page-title">
+
+            <h2 id="contentTitle"></h2>
+
+            <button class="back-btn" onclick="backToSector()">
+                ← العودة للقطاع
+            </button>
+
+        </div>
 
 
         <div class="content-box">
 
-            <h2
-                id="contentTitle"
-            ></h2>
+            <p id="contentText"></p>
 
-            <p
-                id="contentDescription"
-            ></p>
+            <div
+                class="pdf-box"
+                id="pdfContainer"
+                style="display:none;"
+            >
 
-            <div class="coming-soon">
-
-                سيتم إضافة محتوى هذا القسم هنا لاحقًا.
+                <iframe
+                    id="pdfViewer"
+                    src=""
+                    title="دليل مقاطعة امباير"
+                ></iframe>
 
             </div>
 
         </div>
 
-    </section>
+    </div>
 
-</main>
+</section>
+
 
 
 <footer>
 
-    جميع الحقوق محفوظة ©
-    <strong>مقاطعة امباير</strong>
+    جميع الحقوق محفوظة © مقاطعة امباير
 
 </footer>
 
 
+
 <script>
 
-    /* ==========================================
-       بيانات القطاعات والأقسام
-       ========================================== */
 
-    const sectors = {
+const sectors = {
 
-        redcrescent: {
+    redcrescent: {
 
-            name: "الهلال الأحمر",
+        name:"الهلال الأحمر",
 
-            icon: "🚑",
+        icon:"🚑",
 
-            description:
-                "دليل الهلال الأحمر والدورات والقوانين والمخالفات.",
+        sections:[
 
-            sections: [
+            {
+                name:"دليل الهلال",
+                icon:"📘",
+                description:"الدليل الكامل للهلال الأحمر",
+                pdf:"دليل-الهلال-الأحمر.pdf"
+            },
 
-                "دليل الهلال",
-                "دورة العمليات",
-                "دورة الجناح الطبي",
-                "دورة الإشراف",
-                "المخالفات",
-                "قوانين هامة"
+            {
+                name:"دورة العمليات",
+                icon:"📚",
+                description:"دورة العمليات",
+                pdf:null
+            },
 
-            ]
+            {
+                name:"دورة الجناح الطبي",
+                icon:"🏥",
+                description:"دورة الجناح الطبي",
+                pdf:null
+            },
 
-        },
+            {
+                name:"دورة الإشراف",
+                icon:"👨‍💼",
+                description:"دورة الإشراف",
+                pdf:null
+            },
 
+            {
+                name:"المخالفات",
+                icon:"⚠️",
+                description:"مخالفات القطاع",
+                pdf:null
+            },
 
-        publicSecurity: {
+            {
+                name:"قوانين هامة",
+                icon:"📜",
+                description:"القوانين الهامة",
+                pdf:null
+            }
 
-            name: "الأمن العام",
+        ]
 
-            icon: "👮",
-
-            description:
-                "دليل الأمن العام والدورات والقوانين والمخالفات.",
-
-            sections: [
-
-                "دليل الأمن العام",
-                "دورة العمليات",
-                "دورة المورو",
-                "دورة الجناح الجوي",
-                "المخالفات",
-                "قوانين هامة"
-
-            ]
-
-        },
-
-
-        facilities: {
-
-            name: "أمن المنشآت",
-
-            icon: "🛡️",
-
-            description:
-                "الدليل العام والدورات والقوانين والمخالفات.",
-
-            sections: [
-
-                "الدليل العام",
-                "دورة العمليات",
-                "دورة تأهيل الأفراد",
-                "دورة القوات الخاصة",
-                "المخالفات",
-                "قوانين هامة"
-
-            ]
-
-        },
+    },
 
 
-        mechanic: {
+    publicsecurity: {
 
-            name: "الميكانيكي",
+        name:"الأمن العام",
 
-            icon: "🔧",
+        icon:"👮",
 
-            description:
-                "دليل الميكانيكي والدورات والقوانين والمخالفات.",
+        sections:[
 
-            sections: [
+            {
+                name:"دليل الأمن العام",
+                icon:"📘",
+                description:"الدليل العام للأمن العام",
+                pdf:null
+            },
 
-                "الدليل العام",
-                "دورة العمليات",
-                "دورة التعديل والتزويد",
-                "المخالفات",
-                "قوانين هامة"
+            {
+                name:"دورة العمليات",
+                icon:"📚",
+                description:"دورة العمليات",
+                pdf:null
+            },
 
-            ]
+            {
+                name:"دورة المورو",
+                icon:"🚔",
+                description:"دورة المورو",
+                pdf:null
+            },
+
+            {
+                name:"دورة الجناح الجوي",
+                icon:"🚁",
+                description:"دورة الجناح الجوي",
+                pdf:null
+            },
+
+            {
+                name:"المخالفات",
+                icon:"⚠️",
+                description:"مخالفات القطاع",
+                pdf:null
+            },
+
+            {
+                name:"قوانين هامة",
+                icon:"📜",
+                description:"القوانين الهامة",
+                pdf:null
+            }
+
+        ]
+
+    },
+
+
+    facilities: {
+
+        name:"أمن المنشآت",
+
+        icon:"🛡️",
+
+        sections:[
+
+            {
+                name:"الدليل العام",
+                icon:"📘",
+                description:"الدليل العام لأمن المنشآت",
+                pdf:null
+            },
+
+            {
+                name:"دورة العمليات",
+                icon:"📚",
+                description:"دورة العمليات",
+                pdf:null
+            },
+
+            {
+                name:"دورة تأهيل الأفراد",
+                icon:"🎓",
+                description:"دورة تأهيل الأفراد",
+                pdf:null
+            },
+
+            {
+                name:"دورة القوات الخاصة",
+                icon:"🛡️",
+                description:"دورة القوات الخاصة",
+                pdf:null
+            },
+
+            {
+                name:"المخالفات",
+                icon:"⚠️",
+                description:"مخالفات القطاع",
+                pdf:null
+            },
+
+            {
+                name:"قوانين هامة",
+                icon:"📜",
+                description:"القوانين الهامة",
+                pdf:null
+            }
+
+        ]
+
+    },
+
+
+    mechanic: {
+
+        name:"الميكانيكي",
+
+        icon:"🔧",
+
+        sections:[
+
+            {
+                name:"الدليل العام",
+                icon:"📘",
+                description:"الدليل العام للميكانيكي",
+                pdf:null
+            },
+
+            {
+                name:"دورة العمليات",
+                icon:"📚",
+                description:"دورة العمليات",
+                pdf:null
+            },
+
+            {
+                name:"دورة التعديل والتزويد",
+                icon:"🔧",
+                description:"دورة التعديل والتزويد",
+                pdf:null
+            },
+
+            {
+                name:"المخالفات",
+                icon:"⚠️",
+                description:"مخالفات القطاع",
+                pdf:null
+            },
+
+            {
+                name:"قوانين هامة",
+                icon:"📜",
+                description:"القوانين الهامة",
+                pdf:null
+            }
+
+        ]
+
+    }
+
+};
+
+
+
+let currentSector = null;
+
+
+
+function openSector(sectorId){
+
+    currentSector = sectorId;
+
+    const sector = sectors[sectorId];
+
+    document.getElementById("homePage").style.display = "none";
+
+    document.getElementById("contentPage").style.display = "none";
+
+    document.getElementById("sectorPage").style.display = "block";
+
+    document.getElementById("sectorTitle").innerText =
+        sector.icon + "  " + sector.name;
+
+
+    const sectionGrid =
+        document.getElementById("sectionGrid");
+
+    sectionGrid.innerHTML = "";
+
+
+    sector.sections.forEach((section,index)=>{
+
+        const card = document.createElement("div");
+
+        card.className = "section-card";
+
+        card.onclick = function(){
+
+            openSection(index);
+
+        };
+
+
+        card.innerHTML = `
+
+            <div class="section-icon">
+                ${section.icon}
+            </div>
+
+            <div>
+
+                <h3>${section.name}</h3>
+
+                <p>${section.description}</p>
+
+            </div>
+
+        `;
+
+
+        sectionGrid.appendChild(card);
+
+    });
+
+    window.scrollTo(0,0);
+
+}
+
+
+
+function openSection(index){
+
+    const sector = sectors[currentSector];
+
+    const section = sector.sections[index];
+
+
+    document.getElementById("sectorPage").style.display = "none";
+
+    document.getElementById("contentPage").style.display = "block";
+
+
+    document.getElementById("contentTitle").innerText =
+        section.icon + "  " + section.name;
+
+
+    const contentText =
+        document.getElementById("contentText");
+
+    const pdfContainer =
+        document.getElementById("pdfContainer");
+
+    const pdfViewer =
+        document.getElementById("pdfViewer");
+
+
+    if(section.pdf){
+
+        contentText.innerText =
+            "يمكنك مشاهدة الدليل من خلال الملف الموجود بالأسفل.";
+
+        pdfContainer.style.display = "block";
+
+        pdfViewer.src = encodeURI(section.pdf);
+
+    }else{
+
+        contentText.innerText =
+            "سيتم إضافة محتوى هذا القسم قريبًا.";
+
+        pdfContainer.style.display = "none";
+
+        pdfViewer.src = "";
+
+    }
+
+    window.scrollTo(0,0);
+
+}
+
+
+
+function backToSector(){
+
+    document.getElementById("contentPage").style.display = "none";
+
+    document.getElementById("sectorPage").style.display = "block";
+
+    window.scrollTo(0,0);
+
+}
+
+
+
+function goHome(){
+
+    document.getElementById("sectorPage").style.display = "none";
+
+    document.getElementById("contentPage").style.display = "none";
+
+    document.getElementById("homePage").style.display = "block";
+
+    window.scrollTo(0,0);
+
+}
+
+
+
+function searchSectors(){
+
+    const value =
+        document.getElementById("searchInput").value
+        .trim()
+        .toLowerCase();
+
+
+    const cards =
+        document.querySelectorAll(".sector-item");
+
+    let found = 0;
+
+
+    cards.forEach(card=>{
+
+        const name =
+            card.dataset.name.toLowerCase();
+
+        if(name.includes(value)){
+
+            card.style.display = "block";
+
+            found++;
+
+        }else{
+
+            card.style.display = "none";
 
         }
 
-    };
+    });
 
 
-    let currentSector = null;
+    document.getElementById("noResult").style.display =
+        found === 0 ? "block" : "none";
 
+}
 
-    /* ==========================================
-       عرض القطاعات
-       ========================================== */
-
-    function renderSectors(filter = "") {
-
-        const container =
-            document.getElementById("sectorCards");
-
-        container.innerHTML = "";
-
-
-        Object.keys(sectors).forEach(key => {
-
-            const sector = sectors[key];
-
-
-            const searchText =
-                sector.name +
-                " " +
-                sector.description +
-                " " +
-                sector.sections.join(" ");
-
-
-            if (
-                filter &&
-                !searchText
-                    .toLowerCase()
-                    .includes(filter.toLowerCase())
-            ) {
-
-                return;
-
-            }
-
-
-            const card =
-                document.createElement("div");
-
-
-            card.className = "card";
-
-
-            card.onclick = function () {
-
-                openSector(key);
-
-            };
-
-
-            card.innerHTML = `
-
-                <div class="card-icon">
-
-                    ${sector.icon}
-
-                </div>
-
-
-                <h3>
-
-                    ${sector.name}
-
-                </h3>
-
-
-                <p>
-
-                    ${sector.description}
-
-                </p>
-
-            `;
-
-
-            container.appendChild(card);
-
-        });
-
-    }
-
-
-    /* ==========================================
-       البحث
-       ========================================== */
-
-    function searchSectors() {
-
-        const input =
-            document.getElementById("searchInput");
-
-        const value =
-            input.value.trim();
-
-        renderSectors(value);
-
-    }
-
-
-    /* ==========================================
-       فتح القطاع
-       ========================================== */
-
-    function openSector(key) {
-
-        currentSector = key;
-
-        const sector = sectors[key];
-
-
-        document
-            .getElementById("homePage")
-            .classList.remove("active");
-
-
-        document
-            .getElementById("contentPage")
-            .classList.remove("active");
-
-
-        document
-            .getElementById("sectorPage")
-            .classList.add("active");
-
-
-        document
-            .getElementById("sectorIcon")
-            .textContent = sector.icon;
-
-
-        document
-            .getElementById("sectorTitle")
-            .textContent = sector.name;
-
-
-        renderSections(sector);
-
-
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
-
-    }
-
-
-    /* ==========================================
-       عرض أقسام القطاع
-       ========================================== */
-
-    function renderSections(sector) {
-
-        const container =
-            document.getElementById("sectionCards");
-
-        container.innerHTML = "";
-
-
-        sector.sections.forEach(
-            (section, index) => {
-
-                const card =
-                    document.createElement("div");
-
-
-                card.className =
-                    "section-card";
-
-
-                card.onclick = function () {
-
-                    openContent(section);
-
-                };
-
-
-                card.innerHTML = `
-
-                    <div class="section-number">
-
-                        ${String(index + 1).padStart(2, "0")}
-
-                    </div>
-
-
-                    <div class="section-info">
-
-                        <h3>
-
-                            ${section}
-
-                        </h3>
-
-
-                        <p>
-
-                            اضغط للدخول إلى القسم
-
-                        </p>
-
-                    </div>
-
-                `;
-
-
-                container.appendChild(card);
-
-            }
-        );
-
-    }
-
-
-    /* ==========================================
-       فتح المحتوى
-       ========================================== */
-
-    function openContent(sectionName) {
-
-        document
-            .getElementById("sectorPage")
-            .classList.remove("active");
-
-
-        document
-            .getElementById("contentPage")
-            .classList.add("active");
-
-
-        document
-            .getElementById("contentTitle")
-            .textContent = sectionName;
-
-
-        document
-            .getElementById("contentDescription")
-            .textContent =
-            "هذا القسم تابع لقطاع " +
-            sectors[currentSector].name +
-            "، وسيتم إضافة المحتوى الخاص به هنا.";
-
-
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
-
-    }
-
-
-    /* ==========================================
-       العودة للرئيسية
-       ========================================== */
-
-    function goHome() {
-
-        document
-            .getElementById("sectorPage")
-            .classList.remove("active");
-
-
-        document
-            .getElementById("contentPage")
-            .classList.remove("active");
-
-
-        document
-            .getElementById("homePage")
-            .classList.add("active");
-
-
-        currentSector = null;
-
-
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
-
-    }
-
-
-    /* ==========================================
-       العودة للقطاع
-       ========================================== */
-
-    function goSector() {
-
-        document
-            .getElementById("contentPage")
-            .classList.remove("active");
-
-
-        document
-            .getElementById("sectorPage")
-            .classList.add("active");
-
-
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
-
-    }
-
-
-    /* ==========================================
-       تشغيل الموقع
-       ========================================== */
-
-    renderSectors();
 
 </script>
 
